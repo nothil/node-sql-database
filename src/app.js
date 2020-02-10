@@ -1,11 +1,11 @@
-
+require('dotenv').config();
 const Pool  = require('pg').Pool;
 const pool = new Pool({
-       host: 'localhost',
-       port: 5432,
-       user:"user",
-       password: "pass",
-       database: "umuzi_visitors"
+       host: process.env.DB_HOST,
+       port: process.env.DB_PORT,
+       user:process.env.DB_USER,
+       password: process.env.DB_PASSWORD,
+       database: process.env.DB_umuzi_visitors
 });
 
 const createTable = async () => {
@@ -30,10 +30,7 @@ const createTable = async () => {
          console.log(e);
 
      };
- };
-
- 
-
+};
 
 const addNewVisitor = async (name, age, date, time, assistant, comment) => {
     try{
@@ -66,8 +63,6 @@ const listVisitor = async () => {
     };
 };
 
-
-
 const deleteVisitor = async () => {
     try{
        const query = await pool.query(
@@ -83,7 +78,6 @@ const deleteVisitor = async () => {
 
     };
 };
-
 
 const updateVisitor = async (name,assistant) => {
     try{
@@ -110,7 +104,7 @@ const viewVisitor = async () => {
           ;`
       )
        console.log(query.rows)
-       console.log('viewd successfully')
+       console.log('viewed successfully')
 
     }catch(e) {
         console.log(e);
@@ -149,7 +143,7 @@ module.exports = {
  
 
 //listVisitor();
-//createTable();
+createTable();
 //addNewVisitor('daniel', 20, '6/02/2020', '09:20', 'David', 'no comment' );
 //deleteVisitor();
 //updateVisitor();
