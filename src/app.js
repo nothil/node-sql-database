@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 require('dotenv').config()
 
+=======
+require('dotenv').config();
+>>>>>>> a34171f5aced14ddec44656aa30a69a54482eb59
 const Pool  = require('pg').Pool;
 
 const pool = new Pool({
+<<<<<<< HEAD
 
   host: process.env.PG_HOST,
   username: process.env.PG_USER,
@@ -11,6 +16,14 @@ const pool = new Pool({
 })
      
 
+=======
+       host: process.env.DB_HOST,
+       port: process.env.DB_PORT,
+       user:process.env.DB_USER,
+       password: process.env.DB_PASSWORD,
+       database: process.env.DB_DB
+});
+>>>>>>> a34171f5aced14ddec44656aa30a69a54482eb59
 
 const createTable = async () => {
      try{
@@ -34,10 +47,7 @@ const createTable = async () => {
          console.log(e);
 
      };
- };
-
- 
-
+};
 
 const addNewVisitor = async (name, age, date, time, assistant, comment) => {
     try{
@@ -70,8 +80,6 @@ const listVisitor = async () => {
     };
 };
 
-
-
 const deleteVisitor = async () => {
     try{
        const query = await pool.query(
@@ -87,7 +95,6 @@ const deleteVisitor = async () => {
 
     };
 };
-
 
 const updateVisitor = async (name,assistant) => {
     try{
@@ -114,7 +121,7 @@ const viewVisitor = async () => {
           ;`
       )
        console.log(query.rows)
-       console.log('viewd successfully')
+       console.log('viewed successfully')
 
     }catch(e) {
         console.log(e);
@@ -152,10 +159,4 @@ module.exports = {
 
  
 
-//listVisitor();
-//createTable();
-addNewVisitor('sbonelo', 30, '7/02/2020', '08:20', 'zinhle', 'not happy with service' );
-//deleteVisitor();
-//updateVisitor();
-//viewVisitor();
-//deleteAllVisitors();
+
