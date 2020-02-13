@@ -1,53 +1,41 @@
-<<<<<<< HEAD
-require('dotenv').config()
+// require('dotenv').config()
 
-=======
-require('dotenv').config();
->>>>>>> a34171f5aced14ddec44656aa30a69a54482eb59
 const Pool  = require('pg').Pool;
 
 const pool = new Pool({
-<<<<<<< HEAD
-
-  host: process.env.PG_HOST,
-  username: process.env.PG_USER,
-  password: process.env.PG_PASS,
-  database: process.env.PG_umuzi_visitors
+    user: 'user' ,
+    host:'localhost',
+    database: 'db',
+    password: 'pass',
+    port: 8080,
 })
+
      
 
-=======
-       host: process.env.DB_HOST,
-       port: process.env.DB_PORT,
-       user:process.env.DB_USER,
-       password: process.env.DB_PASSWORD,
-       database: process.env.DB_DB
-});
->>>>>>> a34171f5aced14ddec44656aa30a69a54482eb59
 
-const createTable = async () => {
-     try{
-        const query = await pool.query(
-           `CREATE TABLE IF NOT EXISTS
-            VISITORS(
-            ID  SERIAL PRIMARY KEY,
-            visitor_name VARCHAR(60),
-            visitors_age  INT,
-            date_of_visit  DATE,
-            time_of_visit  TIME,
-            assistant_name VARCHAR(60),
-            comments        VARCHAR(200)
+// const createTable = async () => {
+//      try{
+//         const query = await pool.query(
+//            `CREATE TABLE IF NOT EXISTS
+//             VISITORS(
+//             ID  SERIAL PRIMARY KEY,
+//             visitor_name VARCHAR(60),
+//             visitors_age  INT,
+//             date_of_visit  DATE,
+//             time_of_visit  TIME,
+//             assistant_name VARCHAR(60),
+//             comments        VARCHAR(200)
 
-           );`
-       )
-        console.log(query)
-        console.log('table created successful')
+//            );`
+//        )
+//         console.log(query)
+//         console.log('table created successful')
 
-     }catch(e) {
-         console.log(e);
+//      }catch(e) {
+//          console.log(e);
 
-     };
-};
+//      };
+// };
 
 const addNewVisitor = async (name, age, date, time, assistant, comment) => {
     try{
@@ -117,11 +105,13 @@ const viewVisitor = async () => {
     try{
        const query = await pool.query(
           `
-            SELECT * FROM VISITORS WHERE ID=${3}
+            SELECT * FROM VISITORS WHERE ID=${1}
           ;`
       )
        console.log(query.rows)
        console.log('viewed successfully')
+
+       return query.rows
 
     }catch(e) {
         console.log(e);
@@ -145,9 +135,12 @@ const deleteAllVisitors = async () => {
     };
 };
 
+addNewVisitor();
+
+
 
 module.exports = {
-    createTable,
+    
     addNewVisitor,
     deleteVisitor,
     viewVisitor,
@@ -155,7 +148,6 @@ module.exports = {
     updateVisitor,
     deleteAllVisitors
 };
-
 
  
 
