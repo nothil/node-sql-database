@@ -1,12 +1,8 @@
-require('dotenv').config();
-const Pool  = require('pg').Pool;
-const pool = new Pool({
-       host: process.env.DB_HOST,
-       port: process.env.DB_PORT,
-       user:process.env.DB_USER,
-       password: process.env.DB_PASSWORD,
-       database: process.env.DB_DB
-});
+ const  dotenv = require('dotenv').config();
+ const Pool  = require('pg').Pool;
+ const pool = new Pool();
+
+pool.connect();
 
 const createTable = async () => {
      try{
@@ -19,7 +15,7 @@ const createTable = async () => {
             date_of_visit  DATE,
             time_of_visit  TIME,
             assistant_name VARCHAR(60),
-            comments        VARCHAR(200)
+            comments VARCHAR(200)
 
            );`
        )
@@ -31,7 +27,7 @@ const createTable = async () => {
 
      };
 };
-
+ createTable();
 const addNewVisitor = async (name, age, date, time, assistant, comment) => {
     try{
        const query = await pool.query(
@@ -139,13 +135,8 @@ module.exports = {
     deleteAllVisitors
 };
 
+addNewVisitor('nothile', 26, '12/29/2020', '1300', 'khule', 'greate');
+
 
  
 
-//listVisitor();
-createTable();
-//addNewVisitor('daniel', 20, '6/02/2020', '09:20', 'David', 'no comment' );
-//deleteVisitor();
-//updateVisitor();
-//viewVisitor();
-//deleteAllVisitors();
