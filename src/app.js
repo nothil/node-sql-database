@@ -1,4 +1,3 @@
-<<<<<<< HEAD
  const  dotenv = require('dotenv').config();
  const Pool  = require('pg').Pool;
  const pool = new Pool();
@@ -29,47 +28,6 @@ const createTable = async () => {
      };
 };
  createTable();
-=======
-// require('dotenv').config()
-
-const Pool  = require('pg').Pool;
-
-const pool = new Pool({
-    user: 'user' ,
-    host:'localhost',
-    database: 'db',
-    password: 'pass',
-    port: 8080,
-})
-
-     
-
-
-// const createTable = async () => {
-//      try{
-//         const query = await pool.query(
-//            `CREATE TABLE IF NOT EXISTS
-//             VISITORS(
-//             ID  SERIAL PRIMARY KEY,
-//             visitor_name VARCHAR(60),
-//             visitors_age  INT,
-//             date_of_visit  DATE,
-//             time_of_visit  TIME,
-//             assistant_name VARCHAR(60),
-//             comments        VARCHAR(200)
-
-//            );`
-//        )
-//         console.log(query)
-//         console.log('table created successful')
-
-//      }catch(e) {
-//          console.log(e);
-
-//      };
-// };
-
->>>>>>> 4a90d5a4e247e8a1a0ee471b8090ae4583b029c8
 const addNewVisitor = async (name, age, date, time, assistant, comment) => {
     try{
        const query = await pool.query(
@@ -182,14 +140,8 @@ module.exports = {
     deleteAllVisitors
 };
 
-<<<<<<< HEAD
 addNewVisitor('nothile', 26, '12/29/2020', '1300', 'khule', 'greate');
 
 
  
 
-=======
- 
-
-
->>>>>>> 4a90d5a4e247e8a1a0ee471b8090ae4583b029c8

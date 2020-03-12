@@ -1,4 +1,3 @@
-<<<<<<< HEAD
  const visitor = require('../src/app')
  
 
@@ -7,26 +6,6 @@ describe('test for () database', () =>{
         spyOn(visitor, 'addNewVisitor');
     });
  
-=======
-const visitor = require('../src/app')
-
-describe("add function to add visitor data", ()=>{
-  beforeEach(function () {
-      spyOn(visitor, 'addNewVisitor');
-  });
-
-  it("takes the arg name and save data", async (done)=>{
-     visitor.addNewVisitor("name");
-      
-      expect(visitor.addNewVisitor).toHaveBeenCalled();
-      expect(visitor.addNewVisitor).toHaveBeenCalledWith("name");
-      done();
-  });
-
-
-  it('takes the arg age and save data', async (done) => {
-      visitor.addNewVisitor("age");
->>>>>>> 4a90d5a4e247e8a1a0ee471b8090ae4583b029c8
 
        expect(visitor.addNewVisitor).toHaveBeenCalled();
        expect(visitor.addNewVisitor).toHaveBeenCalledWith('age');
@@ -53,8 +32,7 @@ describe("add function to add visitor data", ()=>{
     }); 
 });
 
-<<<<<<< HEAD
-   });
+  
 
 
     it('add visitor information', async (done) => {
@@ -82,12 +60,3 @@ describe("add function to add visitor data", ()=>{
 
     
 
-=======
-  
-
-  
-
-
-
-});
->>>>>>> 4a90d5a4e247e8a1a0ee471b8090ae4583b029c8
